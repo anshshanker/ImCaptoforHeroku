@@ -90,7 +90,7 @@ def load_image(image_file):
 	img = Image.open(image_file)
 	return img 
 st.set_option('deprecation.showfileUploaderEncoding',False)
-st.set_option('server.enableWebSocketCompression',False)
+st.set_option('server.enableWebsocketCompression',False)
 st.title("Image Captioning")
 html_temp="""
 <div style="background-color:tomato;padding:10px">
