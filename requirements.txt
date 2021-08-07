@@ -1,0 +1,3 @@
+tensorflow.keras>=2.5.0
+streamlit>=0.86.0
+numpy>=1.19.5
