@@ -25,13 +25,14 @@ def adjust_and_pass(input_image,model):
     description=description.split(' ', 1)[1]
     description=description.replace('startseq','').replace('endseq','')    
     return description
-
-# extract features from each photo in the directory
-def extract_features(filename):
+@st.cache
+def load_vgg_model():	
 	# load the model
 	model = VGG16()
 	# re-structure the model
 	model = Model(inputs=model.inputs, outputs=model.layers[-2].output)
+# extract features from each photo in the directory
+def extract_features(filename):
 	# load the photo
 	# convert the image pixels to a numpy array
 	image = img_to_array(filename)
@@ -39,6 +40,7 @@ def extract_features(filename):
 	image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
 	# prepare the image for the VGG model
 	image = preprocess_input(image)
+	model=load_vgg_model()
 	# get features
 	feature = model.predict(image, verbose=0)
 	return feature
