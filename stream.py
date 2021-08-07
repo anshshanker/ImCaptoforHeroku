@@ -85,10 +85,10 @@ max_length = 34
 def load_models(img):
     model=tensorflow.keras.models.load_model('model_3.h5')
     return adjust_and_pass(img,model)
-@st.cache
-def load_image(image_file):
-	img = Image.open(image_file)
-	return img 
+#@st.cache
+#def load_image(image_file):
+#	img = Image.open(image_file)
+#	return img 
 st.set_option('deprecation.showfileUploaderEncoding',False)
 st.title("Image Captioning")
 html_temp="""
