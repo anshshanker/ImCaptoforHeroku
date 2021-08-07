@@ -83,7 +83,7 @@ max_length = 34
 # load the model
 @st.cache(allow_output_mutation=True)
 def load_models(img):
-    model=tensorflow.keras.models.load_model('model_4.h5')
+    model=tensorflow.keras.models.load_model('model_3.h5')
     return adjust_and_pass(img,model)
 @st.cache
 def load_image(image_file):
