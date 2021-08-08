@@ -22,9 +22,13 @@ def adjust_and_pass(input_image,model):
 @st.cache
 def load_vgg_model():	
 	# load the model
-	model = VGG16()
+    with st.spinner("..COMPUTING.."):
+        time.sleep(1)
+    model = VGG16()
+    with st.spinner("..COMPUTING.."):
+        time.sleep(1)
 	# re-structure the model
-	model = Model(inputs=model.inputs, outputs=model.layers[-2].output)
+    model = Model(inputs=model.inputs, outputs=model.layers[-2].output)
 # extract features from each photo in the directory
 def extract_features(filename):
 	# load the photo
