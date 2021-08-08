@@ -107,7 +107,9 @@ else:
     #img=load_image(img)
     show_file.image(img)
     img=Image.open(img)
-    img=img.resize((224,224))    
+    img=img.resize((224,224))	    
+    for i in range(1000000):
+        st.subheader(i)
     ans=load_models(img)
     result=st.button("Generate Caption")
     st.write(result)
