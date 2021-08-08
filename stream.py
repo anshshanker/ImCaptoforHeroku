@@ -15,6 +15,7 @@ from tensorflow.keras.models import Model
 import streamlit as st
 import numpy as np
 from PIL import Image
+import time
 
 def adjust_and_pass(input_image,model):
     
@@ -29,6 +30,8 @@ def adjust_and_pass(input_image,model):
 def load_vgg_model():	
 	# load the model
 	model = VGG16()
+	with st.spinner(..COMPUTING..):
+		time.sleep(1)
 	# re-structure the model
 	model = Model(inputs=model.inputs, outputs=model.layers[-2].output)
 # extract features from each photo in the directory
@@ -40,9 +43,15 @@ def extract_features(filename):
 	image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
 	# prepare the image for the VGG model
 	image = preprocess_input(image)
+	with st.spinner(..COMPUTING..):
+		time.sleep(1)
 	model=load_vgg_model()
+	with st.spinner(..COMPUTING..):
+		time.sleep(1)
 	# get features
 	feature = model.predict(image, verbose=0)
+	with st.spinner(..COMPUTING..):
+		time.sleep(1)
 	return feature
 
 # map an integer to a word
@@ -108,8 +117,8 @@ else:
     show_file.image(img)
     img=Image.open(img)
     img=img.resize((224,224))	    
-    for i in range(1000000):
-        st.subheader(i)
+    with st.spinner(..COMPUTING..):
+        time.sleep(3)
     ans=load_models(img)
     result=st.button("Generate Caption")
     st.write(result)
